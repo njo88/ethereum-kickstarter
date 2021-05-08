@@ -4,6 +4,7 @@ import { Form, Button, Input, Message } from 'semantic-ui-react';
 import Layout from "../../components/layout";
 import factory from '../../ethereum/factory';
 import web3 from "../../ethereum/web3";
+import { Router } from '../../routes';
 
 const New = () => {
 
@@ -22,6 +23,7 @@ const New = () => {
 			.send({
 				from: accounts[0]
 			});
+			Router.pushRoute('/');
 		} catch (e) {
 			updateErrorMessage(e.message);
 		}

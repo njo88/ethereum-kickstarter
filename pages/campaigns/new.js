@@ -9,11 +9,14 @@ const New = () => {
 
 	const [minimumContribution, updateMinimumContribution] = useState('');
 	const [errorMessage, updateErrorMessage] = useState('');
+	const [loading, updateLoading] = useState(false);
 
 	const onSubmit = async e => {
 		e.preventDefault();
-		const accounts = await web3.eth.getAccounts();
+		updateLoading(true);
+		updateErrorMessage('');
 		try {
+			const accounts = await web3.eth.getAccounts();
 			await factory.methods
 			.createCampaign(minimumContribution)
 			.send({
@@ -22,6 +25,7 @@ const New = () => {
 		} catch (e) {
 			updateErrorMessage(e.message);
 		}
+		updateLoading(false);
 	};
 
 	return (
@@ -42,7 +46,7 @@ const New = () => {
 					header='Oops!'
 					content={errorMessage}
 				/>
-				<Button primary type='submit'>Create!</Button>
+				<Button primary type='submit' loading={loading}>Create!</Button>
 			</Form>
 		</Layout>
 	)

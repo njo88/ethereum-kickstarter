@@ -1,10 +1,19 @@
 import React from 'react';
 
-const Show = props => {
+import Layout from "../../components/layout";
+
+const CampaignShow = props => {
 
 	return (
-		<h3>Campaign Show</h3>
+		<Layout>
+			<h3>Campaign Show</h3>
+		</Layout>
 	);
 };
 
-export default Show;
+CampaignShow.getInitialProps = async props => {
+	console.log(props.query.address);
+	return {};
+};
+
+export default CampaignShow;

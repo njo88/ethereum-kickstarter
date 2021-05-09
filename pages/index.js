@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Button } from 'semantic-ui-react';
 
+import { Link } from '../routes';
 import factory from "../ethereum/factory";
 import Layout from "../components/layout";
 
@@ -8,7 +9,7 @@ const Index = props => {
 
 	const items = props.campaigns.map(address => ({
 		header: address,
-		description: <a>View Campaign</a>,
+		description: <Link route={`/campaigns/${address}`}><a>View Campaign</a></Link>,
 		fluid: true
 	}))
 
@@ -16,12 +17,16 @@ const Index = props => {
 		<Layout>
 			<div>
 				<h3>Open Campaigns</h3>
-				<Button
-					content='Create Campaign'
-					icon='add circle'
-					primary
-					floated='right'
-				/>
+				<Link route='/campaigns/new'>
+					<a>
+						<Button
+							content='Create Campaign'
+							icon='add circle'
+							primary
+							floated='right'
+						/>
+					</a>
+				</Link>
 				<Card.Group items={items} />
 			</div>
 		</Layout>

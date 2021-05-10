@@ -3,7 +3,7 @@ import { Card, Button } from 'semantic-ui-react';
 
 import { Link } from '../routes';
 import factory from "../ethereum/factory";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 
 const Index = props => {
 

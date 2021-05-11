@@ -35,7 +35,6 @@ const Index = props => {
 
 Index.getInitialProps = async () => {
 	const campaigns = await factory.methods.getDeployedCampaigns().call();
-	console.log(campaigns);
 	return { campaigns };
 };
 
